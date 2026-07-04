@@ -1,0 +1,189 @@
+/* ===== Layout ===== */
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; width: 100%; }
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  padding: 4rem 1rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); margin-bottom: 0.75rem; }
+.hero p  { font-size: 1.15rem; opacity: 0.95; max-width: 640px; margin: 0 auto 1.5rem; }
+.hero .pulse {
+  display: inline-block;
+  font-size: 4rem;
+  animation: pulse 1.4s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+.hero .cta-group { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+.btn-primary { background: #fff; color: var(--primary); }
+.btn-ghost   { background: transparent; color: #fff; border: 2px solid #fff; }
+
+/* ===== Nav ===== */
+.nav {
+  background: var(--card);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nav .container { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1.25rem; }
+.nav .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); }
+.nav .logo span { color: var(--text); }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { color: var(--text); font-weight: 500; }
+
+/* ===== Sections ===== */
+.section { padding: 3.5rem 0; }
+.section h2 { font-size: 1.9rem; text-align: center; margin-bottom: 0.5rem; color: var(--primary-dark); }
+.section .sub { text-align: center; color: var(--muted); margin-bottom: 2rem; }
+.section-alt { background: var(--card); }
+
+/* ===== Stats ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.stat-card .num { font-size: 2.25rem; font-weight: 800; color: var(--primary); }
+.stat-card .label { color: var(--muted); font-size: 0.9rem; }
+
+.blood-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.6rem;
+}
+.blood-pill {
+  background: #fff;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
+}
+.blood-pill .count { font-size: 1.25rem; }
+.blood-pill .group { font-size: 0.85rem; opacity: 0.8; }
+
+/* ===== Forms ===== */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.field { display: flex; flex-direction: column; }
+.field label { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--text); }
+.field input, .field select, .field textarea {
+  padding: 0.6rem 0.8rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  outline: none;
+  transition: border 0.15s;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--primary); }
+.field-full { grid-column: 1 / -1; }
+.checkbox-row { display: flex; align-items: center; gap: 0.5rem; }
+
+.submit-btn {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  transition: background 0.15s;
+}
+.submit-btn:hover { background: var(--primary-dark); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.alert { padding: 0.8rem 1rem; border-radius: 8px; margin-top: 1rem; font-weight: 500; }
+.alert-success { background: #d4f4dd; color: var(--success); border: 1px solid var(--success); }
+.alert-error   { background: #fde2e2; color: var(--primary-dark); border: 1px solid var(--primary); }
+
+/* ===== Search ===== */
+.search-bar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.search-bar select, .search-bar input { padding: 0.55rem 0.8rem; border: 2px solid var(--border); border-radius: 8px; }
+.search-bar button { padding: 0.55rem 1.2rem; background: var(--primary); color: #fff; border-radius: 8px; font-weight: 600; }
+.search-bar button.secondary { background: var(--muted); }
+
+/* ===== Lists ===== */
+.list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s;
+}
+.card:hover { transform: translateY(-3px); }
+.card .head { display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem; }
+.card h3 { font-size: 1.1rem; }
+.card .bg-badge {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.card .meta { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+.card .meta strong { color: var(--text); }
+.urgency-critical { color: var(--primary-dark); font-weight: 800; }
+.urgency-urgent   { color: var(--warn); font-weight: 700; }
+
+.empty { text-align: center; color: var(--muted); padding: 2rem; }
+
+/* ===== Footer ===== */
+.footer {
+  background: var(--primary-dark);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+.footer p { opacity: 0.9; }
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .nav-links { gap: 0.9rem; font-size: 0.9rem; }
+  .hero { padding: 3rem 1rem 3.5rem; }
+}
