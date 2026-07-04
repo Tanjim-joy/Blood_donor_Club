@@ -26,10 +26,11 @@ func ConnectDatabase() {
 		log.Fatal("DB_USER, DB_HOST, DB_NAME are required env vars")
 	}
 	if port == "" {
-		port = "3306"
+		port = "26274" // default Aiven port
 	}
-	if sslMode == "" {
-		sslMode = "true"
+	if sslMode == "" || sslMode == "true" {
+		// sslMode = "true"
+		sslMode = "skip-verify"
 	}
 
 	dsn := fmt.Sprintf(
