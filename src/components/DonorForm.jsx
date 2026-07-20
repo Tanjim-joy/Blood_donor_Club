@@ -65,11 +65,11 @@ export default function DonorForm({ onCreated }) {
         </div>
         <div className="field">
           <label>Area / Thana *</label>
-          <input value={form.area} onChange={update('area')} required placeholder="e.g. Dhanmondi" />
+          <input value={form.area} onChange={update('area')} required placeholder="e.g. Mistreepara" />
         </div>
         <div className="field">
           <label>City *</label>
-          <input value={form.city} onChange={update('city')} required placeholder="e.g. Dhaka" />
+          <input value={form.city} onChange={update('city')} required placeholder="e.g. Chapai Nawabgan" />
         </div>
         <div className="field field-full">
           <label>Notes (last donation, health conditions, etc.)</label>

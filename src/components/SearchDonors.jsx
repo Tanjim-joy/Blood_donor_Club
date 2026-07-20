@@ -12,7 +12,7 @@ export default function SearchDonors({ donors, search, setSearch }) {
           {BLOOD_GROUPS.map(bg => <option key={bg} value={bg}>{bg}</option>)}
         </select>
         <input
-          placeholder="Area (e.g. Dhanmondi)"
+          placeholder="Area (e.g. Chapai Nawabganj Sador)"
           value={search.area}
           onChange={(e) => setSearch({ ...search, area: e.target.value })}
         />

@@ -65,8 +65,8 @@ export default function RequestForm({ onCreated }) {
           <input value={form.contact} onChange={update('contact')} required />
         </div>
         <div className="field">
-          <label>Area *</label>
-          <input value={form.area} onChange={update('area')} required placeholder="e.g. Mirpur" />
+          <label>Area / Thana *</label>
+          <input value={form.area} onChange={update('area')} required placeholder="e.g. Hospital Road" />
         </div>
         <div className="field">
           <label>Needed By (date/time)</label>
