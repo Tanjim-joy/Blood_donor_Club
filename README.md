@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Blood_Donor_Club
-=======
 # 🩸 RoktoDao — Blood Donor Group Website
 
 A non-profit blood donor community website. One-page React + Vite frontend, Go (Gin + GORM) API backend, MySQL database (Aiven free tier).
@@ -20,23 +17,24 @@ A non-profit blood donor community website. One-page React + Vite frontend, Go (
 ## 📁 Project Structure
 
 ```
-blood-donor-site/
-├── backend/                  # Go API
-│   ├── main.go               # Entry point
-│   ├── config/database.go    # MySQL connection
-│   ├── models/               # Donor, BloodRequest structs
-│   ├── handlers/             # HTTP handlers
-│   ├── database/schema.sql   # Optional raw SQL
-│   ├── .env.example
+Blood_dnr/
+├── backend/Blood_dnr_api/       # Go API (this repo's backend)
+│   ├── main.go                  # Entry point
+│   ├── config/database.go       # MySQL connection
+│   ├── models/                  # Donor, BloodRequest structs
+│   ├── handlers/                # HTTP handlers
+│   ├── database/schema.sql      # Optional raw SQL + demo data
+│   ├── .env.example             # Copy to .env and fill in
 │   └── go.mod
-└── frontend/                 # React + Vite
-    ├── src/
-    │   ├── App.jsx           # Main page (one-pager)
-    │   ├── api.js            # Axios setup
-    │   └── components/       # Hero, Stats, Forms, etc.
-    ├── index.html
-    ├── vite.config.js
-    └── package.json
+├── Frontend/Blood_donor_Club/   # React + Vite (this folder)
+│   ├── src/
+│   │   ├── App.jsx              # Main page (one-pager)
+│   │   ├── api.js               # Axios setup
+│   │   └── components/          # Hero, Stats, Forms, etc.
+│   ├── index.html
+│   ├── vite.config.js
+│   └── package.json
+└── blood-donor-site/            # Older duplicate of the frontend (legacy, not used)
 ```
 
 ---
@@ -52,11 +50,11 @@ blood-donor-site/
 ### 2. Run the backend
 
 ```bash
-cd backend
+cd backend/Blood_dnr_api
 cp .env.example .env
 # Edit .env and paste your Aiven credentials
 
-go mod tidy 
+go mod tidy
 go run main.go
 ```
 
@@ -69,12 +67,12 @@ curl http://localhost:8080/api/health
 ### 3. Run the frontend
 
 ```bash
-cd frontend
+cd Frontend/Blood_donor_Club
 npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` — you should see the full site, and the frontend will proxy `/api/*` to your Go backend.
+Open `http://localhost:5173` — you should see the full site, and the frontend will proxy `/api/*` to your Go backend on port 8080.
 
 ---
 
@@ -84,16 +82,16 @@ Open `http://localhost:5173` — you should see the full site, and the frontend 
 
 1. Push your code to GitHub
 2. Go to https://railway.app → "New Project" → "Deploy from GitHub"
-3. Select the repo, set **Root Directory** to `backend`
+3. Select the repo, set **Root Directory** to `backend/Blood_dnr_api`
 4. Add environment variables in Railway dashboard:
    - `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_SSL_MODE=true`
-   - `CORS_ORIGINS` = your Vercel URL (set after frontend deploy)
+   - `CORS_ORIGINS` = your Vercel URL (comma-separated if more than one; set after frontend deploy)
 5. Railway auto-detects Go and deploys. Copy the public URL: `https://xxx.up.railway.app`
 
 ### Frontend → Vercel (free)
 
 1. Go to https://vercel.com → "New Project" → import the same repo
-2. Set **Root Directory** to `frontend`, Framework: "Vite"
+2. Set **Root Directory** to `Frontend/Blood_donor_Club`, Framework: "Vite"
 3. Add env var: `VITE_API_BASE` = your Railway API URL
 4. Deploy. You'll get `https://xxx.vercel.app`
 
@@ -123,16 +121,14 @@ Open `http://localhost:5173` — you should see the full site, and the frontend 
 
 ## 🛠 Troubleshooting
 
-- **"connection refused"** → check `DB_HOST` and `DB_PORT` in `.env` (Aiven uses non-standard port like 21581)
+- **"connection refused"** → check `DB_HOST` and `DB_PORT` in backend `.env` (Aiven uses a non-standard port like 21581)
 - **"certificate verify failed"** → make sure `DB_SSL_MODE=true` (required by Aiven)
-- **CORS error in browser** → set `CORS_ORIGINS` in backend env to your frontend URL
+- **CORS error in browser** → set `CORS_ORIGINS` in backend env to your frontend URL (comma-separated for multiple)
 - **Frontend can't reach API in prod** → make sure `VITE_API_BASE` is set in Vercel env, then redeploy
-- **Migration failed** → log into Aiven console and run the SQL in `backend/database/schema.sql` manually
+- **Migration failed** → log into Aiven console and run the SQL in `backend/Blood_dnr_api/database/schema.sql` manually
 
 ---
 
 ## 📜 License
 
->>>>>>> 220368c (Initial upload from local machine)
 Free to use for humanitarian / non-profit causes. No warranty.
-"# Blood_donor_Club" 

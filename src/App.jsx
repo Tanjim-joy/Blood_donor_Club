@@ -14,11 +14,18 @@ export default function App() {
   const [requests, setRequests] = useState([])
   const [stats, setStats] = useState(null)
   const [search, setSearch] = useState({ blood_group: '', area: '' })
+  // Debounced copy of `search` so typing doesn't fire an API call per keystroke
+  const [debouncedSearch, setDebouncedSearch] = useState(search)
+
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedSearch(search), 400)
+    return () => clearTimeout(t)
+  }, [search])
 
   const refresh = async () => {
     try {
       const [d, r, s] = await Promise.all([
-        getDonors(search),
+        getDonors(debouncedSearch),
         getRequests(),
         getStats(),
       ])
@@ -30,7 +37,7 @@ export default function App() {
     }
   }
 
-  useEffect(() => { refresh() }, [search.blood_group, search.area])
+  useEffect(() => { refresh() }, [debouncedSearch])
 
   return (
     <div className="app">
